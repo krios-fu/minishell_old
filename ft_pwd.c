@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_envp.c                                          :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:13:28 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/27 22:28:34 by krios-fu         ###   ########.fr       */
+/*   Created: 2021/01/27 21:57:18 by krios-fu          #+#    #+#             */
+/*   Updated: 2021/01/27 23:14:40 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list *ft_envp(char ** envp)
+void	ft_pwd_print(t_list *env_l)
 {
-    t_list *envp_l;
-
-    int i ;
-
-    i = 1; 
-    envp_l = ft_lstnew (envp [0]);
-    while (envp[i])
-    {
-        ft_lstadd_back(&envp_l, ft_lstnew ((char *)envp [i]));
-        i++;
-    }  
-    return(envp_l);
-}
-
-void ft_print_envp(t_list *envp_l)
-{
-    while (envp_l)
-    {
-        printf("%s\n", envp_l->content);
-        envp_l = envp_l->next;
-    }  
+    while(!ft_strnstr((char *)env_l->content, "PWD=", 4))
+        env_l = env_l->next;
+    printf("%s",ft_strchr(env_l->content, '/'));
 }
