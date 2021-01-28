@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:34:24 by krios-fu         ###   ########.fr       */
+/*   Created: 2020/01/13 16:15:50 by krios-fu          #+#    #+#             */
+/*   Updated: 2020/01/29 13:34:11 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MINISHELL_H
-# define _MINISHELL_H
+#include "libft.h"
 
-#include "./srcs/libft/libft.h"
-#include "./srcs/gnl/get_next_line_bonus.h"
-#include <unistd.h>
-#include <stdio.h>
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t len;
+	size_t i;
 
-
-t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
-void    ft_pwd_print(void);
-
-#endif
+	len = 0;
+	i = 0;
+	while (dst[i] && i < dstsize)
+		i++;
+	len = i;
+	while (src[i - len] && i + 1 < dstsize)
+	{
+		dst[i] = src[i - len];
+		i++;
+	}
+	if (len < dstsize)
+		dst[i] = '\0';
+	return (len + ft_strlen(src));
+}

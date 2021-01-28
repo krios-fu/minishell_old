@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_hexalen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:34:24 by krios-fu         ###   ########.fr       */
+/*   Created: 2020/02/28 04:09:48 by krios-fu          #+#    #+#             */
+/*   Updated: 2020/02/29 16:58:56 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MINISHELL_H
-# define _MINISHELL_H
+#include "printf.h"
 
-#include "./srcs/libft/libft.h"
-#include "./srcs/gnl/get_next_line_bonus.h"
-#include <unistd.h>
-#include <stdio.h>
+int					ft_hexalen(unsigned long nb)
+{
+	int				count;
+	unsigned int	n;
 
-
-t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
-void    ft_pwd_print(void);
-
-#endif
+	n = nb;
+	count = 0;
+	if (n >= 16)
+	{
+		while (n >= 16)
+		{
+			++count;
+			n /= 16;
+		}
+	}
+	if (n >= 0)
+		count++;
+	return (count);
+}

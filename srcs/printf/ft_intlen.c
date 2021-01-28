@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:34:24 by krios-fu         ###   ########.fr       */
+/*   Created: 2020/02/26 18:23:11 by krios-fu          #+#    #+#             */
+/*   Updated: 2020/02/28 12:42:41 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MINISHELL_H
-# define _MINISHELL_H
+#include "printf.h"
 
-#include "./srcs/libft/libft.h"
-#include "./srcs/gnl/get_next_line_bonus.h"
-#include <unistd.h>
-#include <stdio.h>
+size_t	ft_intlen(long nb)
+{
+	size_t		count;
 
-
-t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
-void    ft_pwd_print(void);
-
-#endif
+	count = 0;
+	if (nb == 0)
+	{
+		count++;
+		return (count);
+	}
+	if (nb < 0)
+	{
+		nb = nb * -1;
+		count++;
+	}
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		count++;
+	}
+	return (count);
+}

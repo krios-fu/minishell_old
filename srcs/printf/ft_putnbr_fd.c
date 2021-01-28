@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:34:24 by krios-fu         ###   ########.fr       */
+/*   Created: 2020/01/25 18:17:40 by krios-fu          #+#    #+#             */
+/*   Updated: 2020/02/26 19:28:32 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MINISHELL_H
-# define _MINISHELL_H
+#include "printf.h"
 
-#include "./srcs/libft/libft.h"
-#include "./srcs/gnl/get_next_line_bonus.h"
-#include <unistd.h>
-#include <stdio.h>
+void	ft_putnbr_fd(int n, int fd)
+{
+	long r;
 
-
-t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
-void    ft_pwd_print(void);
-
-#endif
+	r = n;
+	if (r < 0)
+		r = r * -1;
+	if (r >= 10)
+	{
+		ft_putnbr_fd(r / 10, fd);
+		ft_putnbr_fd(r % 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd(r + '0', fd);
+	}
+}

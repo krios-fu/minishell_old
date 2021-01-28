@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:34:24 by krios-fu         ###   ########.fr       */
+/*   Created: 2020/01/26 00:10:58 by krios-fu          #+#    #+#             */
+/*   Updated: 2020/01/27 13:04:10 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MINISHELL_H
-# define _MINISHELL_H
+#include "libft.h"
 
-#include "./srcs/libft/libft.h"
-#include "./srcs/gnl/get_next_line_bonus.h"
-#include <unistd.h>
-#include <stdio.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*newstr;
+	int		i;
 
-
-t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
-void    ft_pwd_print(void);
-
-#endif
+	if (!s || !f)
+		return (NULL);
+	if (!(newstr = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		newstr[i] = f(i, s[i]);
+		i++;
+	}
+	newstr[i] = '\0';
+	return (newstr);
+}

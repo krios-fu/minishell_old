@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:34:24 by krios-fu         ###   ########.fr       */
+/*   Created: 2020/01/18 16:42:39 by krios-fu          #+#    #+#             */
+/*   Updated: 2020/01/27 22:34:38 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _MINISHELL_H
-# define _MINISHELL_H
+#include "libft.h"
 
-#include "./srcs/libft/libft.h"
-#include "./srcs/gnl/get_next_line_bonus.h"
-#include <unistd.h>
-#include <stdio.h>
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	len;
+	char	*mem;
 
-
-t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
-void    ft_pwd_print(void);
-
-#endif
+	if (!s1 || !set)
+		return (NULL);
+	while (ft_strchr(set, *s1) && *s1 != '\0')
+		s1++;
+	if (*s1 == '\0')
+		return (ft_strdup(""));
+	len = ft_strlen(s1);
+	while (ft_strchr(set, s1[len]))
+		len--;
+	mem = ft_substr(s1, 0, len + 1);
+	return (mem);
+}
