@@ -1,4 +1,4 @@
-GNL= srcs/gnl/get_next_line_bonus.c
+GNL= srcs/gnl/get_next_line_bonus.c srcs/gnl/get_next_line_utils_bonus.c 
 
 SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c
 
@@ -7,7 +7,8 @@ OBJS= $(SRCS:.c=.o)
 NAME= minishell.a
 
 $(NAME): $(OBJS)
-		@make -sC ./srcs/libft/
+		#@make -sC ./srcs/libft/
+		@make bonus -sC ./srcs/libft/
 		@cp ./srcs/libft/libft.a .
 		@mv libft.a $(NAME)
 
