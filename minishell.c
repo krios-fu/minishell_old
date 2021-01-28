@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:22:56 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:40:55 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void ft_prompt(void)
  
 int main (int argc, char *argv [], char *envp [])
 {
-	char str[4];
 	char *line;
 	t_list *envp_l;
 	
