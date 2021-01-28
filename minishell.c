@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 01:04:12 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/28 13:50:47 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int main (int argc, char *argv [], char *envp [])
 	char str[4];
 	t_list *envp_l;
 	
+	argc = 0;
+	argv = 0;
 	envp_l = ft_envp(envp);
 	ft_head();
 	
