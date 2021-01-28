@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 13:50:47 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/01/28 14:22:56 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_prompt(void)
 {
-	write(1, "\x1b[33mmini\x1b[34mshe\x1b[31mll> \x1b[37m", 31);
+	write(1, "\x1b[33mmini\x1b[34mshe\x1b[31mll> \x1b[37m", 32);
 }
 
  void ft_head (void)
@@ -27,22 +27,22 @@ void ft_prompt(void)
 int main (int argc, char *argv [], char *envp [])
 {
 	char str[4];
+	char *line;
 	t_list *envp_l;
 	
 	argc = 0;
 	argv = 0;
 	envp_l = ft_envp(envp);
 	ft_head();
-	
-	while(1)
+	ft_prompt();
+	while(get_next_line (0, &line) > 0)
 	{
-		ft_prompt();
-		read(0, str, 1053);
-		if(!ft_strncmp(str, "pwd", 3))
-			ft_pwd_print(envp_l);
-		else if(!ft_strncmp(str, "env", 3))
+		
+		if(!ft_strncmp(line, "pwd", 3))
+			ft_pwd_print();
+		else if(!ft_strncmp(line, "env", 3))
 			ft_print_envp(envp_l);
-		printf("%s", str);
+			ft_prompt();
 	}
 
 	return (0);
