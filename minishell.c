@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 22:58:54 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/28 23:52:20 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int main (int argc, char *argv [], char *envp [])
 			ft_pwd_print();
 		else if(!ft_strncmp(line, "env", 3))
 			ft_print_envp(envp_l);
-			ft_prompt();
+			else if(!ft_strncmp(line, "echo", 4))
+				ft_echo(&line[5], "-n");
+
+		ft_prompt();
 	}
 
 	return (0);

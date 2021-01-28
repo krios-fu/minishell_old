@@ -1,6 +1,6 @@
 GNL= srcs/gnl/get_next_line_bonus.c 
 
-SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c
+SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c ft_echo.c
 
 OBJS= $(SRCS:.c=.o)
 
@@ -26,8 +26,8 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 run:
-	@gcc -Wall -Werror -Wextra libft.a libftprintf.a minishell.a -o minishell
 	@clear
+	@gcc -Wall -Werror -Wextra libft.a libftprintf.a minishell.a -o minishell
 
 clean:
 	clear
