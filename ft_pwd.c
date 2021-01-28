@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 21:57:18 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 14:19:09 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/28 22:59:52 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_pwd_print()
 	char *pwd;
 	
 	pwd = getcwd(NULL, 0);
-	printf("%s", pwd);
+	ft_printf("%s\n", pwd);
 	free (pwd);
 }

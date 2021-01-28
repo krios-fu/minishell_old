@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 18:13:28 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 13:38:18 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/28 22:58:35 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_print_envp(t_list *envp_l)
 {
     while (envp_l)
     {
-        printf("%s\n", envp_l->content);
+        ft_printf("%s\n", envp_l->content);
         envp_l = envp_l->next;
     }  
 }
