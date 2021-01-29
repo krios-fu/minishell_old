@@ -1,6 +1,6 @@
 GNL= srcs/gnl/get_next_line_bonus.c 
 
-SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c ft_echo.c ft_parseo.c
+SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c ft_echo.c ft_parseo.c ft_erro_msg.c
 
 OBJS= $(SRCS:.c=.o)
 

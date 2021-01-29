@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/29 17:33:50 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:29:46 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_prompt(void)
 {
-	write(1, "\x1b[33mmini\x1b[34mshe\x1b[31mll> \x1b[37m", 32);
+	write(1, "minishell> ", 11);
 }
 
  void ft_head (void)
@@ -46,16 +46,19 @@ int main (int argc, char *argv [], char *envp [])
 		n_cmd = 0;
 		while (comand[n_cmd] != '\0')
 		{
+			spc = 0;
 			while (comand[n_cmd][spc]== ' ')
 				spc++;
-			if(!ft_strncmp(&comand[n_cmd][spc], "pwd ", 4) || !ft_strncmp(comand[n_cmd], "pwd", 3))
+			if(!ft_strncmp(&comand[n_cmd][spc], "pwd ", 4) || !ft_strncmp(&comand[n_cmd][spc], "pwd", 3))
 					ft_pwd_print();
-			else if(!ft_strncmp(&comand[n_cmd][spc], "env ", 4) || !ft_strncmp(comand[n_cmd], "env", 3))
+			else if(!ft_strncmp(&comand[n_cmd][spc], "env ", 4) || !ft_strncmp(&comand[n_cmd][spc], "env", 3))
 					ft_print_envp(envp_l);
-			else if(!ft_strncmp(&comand[n_cmd][spc], "echo -n", 6))
-					ft_echo(&comand[n_cmd][7], "-n");
-			else if(!ft_strncmp(comand[n_cmd], "echo ", 5) || !ft_strncmp(comand[n_cmd], "echo", 4))
-					ft_echo(&comand[n_cmd][5], "");
+		//	else if(!ft_strncmp(&comand[n_cmd][spc], "echo -n", 6))
+		//			ft_echo(&comand[n_cmd][7 + spc], "-n");
+			else if(!ft_strncmp(&comand[n_cmd][spc], "echo ", 5) || !ft_strncmp(&comand[n_cmd][spc], "echo", 4))
+					ft_echo(&comand[n_cmd][5 + spc]);
+			else
+				ft_error_msg (&comand[n_cmd][spc]);
 			n_cmd++;
 		}
 		ft_prompt();

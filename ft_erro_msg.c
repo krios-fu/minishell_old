@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_erro_msg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 23:10:33 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/29 19:32:03 by krios-fu         ###   ########.fr       */
+/*   Created: 2021/01/29 19:07:05 by krios-fu          #+#    #+#             */
+/*   Updated: 2021/01/29 19:22:54 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    ft_echo(char *str)
+void	ft_error_msg (char *str)
 {
-	while (*str == ' ')
-		str++;
-	if (str[0] == '-' && str[1] == 'n' && str[2] == ' ')
-	{
-		while (*str == ' ' || *str == '-' || *str == 'n')
-			str++;
-		ft_printf("%s", str);
-		return ;
-	}
-	while (*str == ' ')
-			str++;
-	if(*str == '\0')
-	{
-		write(1, "\n", 1);
-		return ;
-	}
-	else
-		ft_printf("%s\n", str);
-//	if (argv[0] == '-' && argv[1] == 'n')
-//		ft_printf("%s", str);
+	ft_printf("\x1b[31mminishell: command not found: %s\x1b[0m\n", str);
 }
