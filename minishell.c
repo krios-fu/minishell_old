@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/29 19:29:46 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:43:35 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main (int argc, char *argv [], char *envp [])
 			if(!ft_strncmp(&comand[n_cmd][spc], "pwd ", 4) || !ft_strncmp(&comand[n_cmd][spc], "pwd", 3))
 					ft_pwd_print();
 			else if(!ft_strncmp(&comand[n_cmd][spc], "env ", 4) || !ft_strncmp(&comand[n_cmd][spc], "env", 3))
-					ft_print_envp(envp_l);
+					ft_print_envp(envp);
 		//	else if(!ft_strncmp(&comand[n_cmd][spc], "echo -n", 6))
 		//			ft_echo(&comand[n_cmd][7 + spc], "-n");
 			else if(!ft_strncmp(&comand[n_cmd][spc], "echo ", 5) || !ft_strncmp(&comand[n_cmd][spc], "echo", 4))
