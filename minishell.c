@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/29 19:23:52 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/01/29 20:38:50 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_prompt(void)
 {
-	write(1, "\x1b[33mmini\x1b[34mshe\x1b[31mll> \x1b[37m", 32);
+	write(1, "minishell> ", 11);
 }
 
  void ft_head (void)
@@ -24,7 +24,7 @@ void ft_prompt(void)
 
  }
  
-int main (int argc, char *argv [], char *envp [])
+int main (int argc, char *argv[], char *envp[])
 {
 	char *line;
 	char **comand;
@@ -36,9 +36,9 @@ int main (int argc, char *argv [], char *envp [])
 	spc = 0;
 	argc = 0;
 	argv = 0;
-	envp_l = ft_envp(envp);
 	ft_head();
 	ft_prompt();
+	envp_l = ft_set_envp(envp);
 	
 	while(get_next_line (0, &line) > 0)
 	{
@@ -46,16 +46,19 @@ int main (int argc, char *argv [], char *envp [])
 		n_cmd = 0;
 		while (comand[n_cmd] != '\0')
 		{
+			spc = 0;
 			while (comand[n_cmd][spc]== ' ')
 				spc++;
-			if(!ft_strncmp(&comand[n_cmd][spc], "pwd ", 4) || !ft_strncmp(comand[n_cmd], "pwd", 3))
+			if(!ft_strncmp(&comand[n_cmd][spc], "pwd ", 4) || !ft_strncmp(&comand[n_cmd][spc], "pwd", 3))
 					ft_pwd_print();
-			else if(!ft_strncmp(&comand[n_cmd][spc], "env ", 4) || !ft_strncmp(comand[n_cmd], "env", 3))
-					ft_print_envp(envp);
-			else if(!ft_strncmp(&comand[n_cmd][spc], "echo -n", 6))
-					ft_echo(&comand[n_cmd][7], "-n");
-			else if(!ft_strncmp(comand[n_cmd], "echo ", 5) || !ft_strncmp(comand[n_cmd], "echo", 4))
-					ft_echo(&comand[n_cmd][5], "");
+			else if(!ft_strncmp(&comand[n_cmd][spc], "env ", 4) || !ft_strncmp(&comand[n_cmd][spc], "env", 3))
+					ft_printf_env(envp_l);
+		//	else if(!ft_strncmp(&comand[n_cmd][spc], "echo -n", 6))
+		//			ft_echo(&comand[n_cmd][7 + spc], "-n");
+			else if(!ft_strncmp(&comand[n_cmd][spc], "echo ", 5) || !ft_strncmp(&comand[n_cmd][spc], "echo", 4))
+					ft_echo(&comand[n_cmd][5 + spc]);
+			else
+				ft_error_msg (&comand[n_cmd][spc]);
 			n_cmd++;
 		}
 		ft_prompt();
