@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 14:58:27 by krios-fu          #+#    #+#             */
-/*   Updated: 2020/01/29 13:32:42 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/29 14:15:31 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 typedef struct	s_list
 {
+	void			*var;
+	char			c;
 	void			*content;
 	struct s_list	*next;
 }				t_list;

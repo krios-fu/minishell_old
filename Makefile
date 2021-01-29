@@ -1,6 +1,6 @@
 GNL= srcs/gnl/get_next_line_bonus.c 
 
-SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c ft_echo.c
+SRCS= $(GNL) ft_envp.c ft_pwd.c minishell.c ft_echo.c ft_parseo.c
 
 OBJS= $(SRCS:.c=.o)
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJS)
 		@ranlib $(NAME)
 
 .c.o:
-	@gcc -Wall -Werror -Wextra -c $< -o ${<:.c=.o}
+	@gcc -Wall -Werror -Wextra -g -c $< -o ${<:.c=.o}
 	@clear
 	@echo "\033[33mCompilando...\033[0m"
 
