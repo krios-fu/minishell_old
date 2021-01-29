@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 21:57:18 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/29 14:10:09 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/01/29 14:13:58 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,4 @@ void	ft_pwd_print()
 	pwd = getcwd(NULL, 0);
 	ft_printf("%s\n", pwd);
 	free (pwd);
-
-	//adios
 }
