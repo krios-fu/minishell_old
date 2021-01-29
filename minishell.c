@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 23:52:20 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:23:52 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,39 @@ void ft_prompt(void)
 int main (int argc, char *argv [], char *envp [])
 {
 	char *line;
+	char **comand;
+	int  n_cmd;
+	int spc;
 	t_list *envp_l;
 	
+	n_cmd = 0;
+	spc = 0;
 	argc = 0;
 	argv = 0;
 	envp_l = ft_envp(envp);
 	ft_head();
 	ft_prompt();
+	
 	while(get_next_line (0, &line) > 0)
 	{
-		
-		if(!ft_strncmp(line, "pwd", 3))
-			ft_pwd_print();
-		else if(!ft_strncmp(line, "env", 3))
-			ft_print_envp(envp_l);
-			else if(!ft_strncmp(line, "echo", 4))
-				ft_echo(&line[5], "-n");
-
+		comand = ft_set_comand(line);
+		n_cmd = 0;
+		while (comand[n_cmd] != '\0')
+		{
+			while (comand[n_cmd][spc]== ' ')
+				spc++;
+			if(!ft_strncmp(&comand[n_cmd][spc], "pwd ", 4) || !ft_strncmp(comand[n_cmd], "pwd", 3))
+					ft_pwd_print();
+			else if(!ft_strncmp(&comand[n_cmd][spc], "env ", 4) || !ft_strncmp(comand[n_cmd], "env", 3))
+					ft_print_envp(envp);
+			else if(!ft_strncmp(&comand[n_cmd][spc], "echo -n", 6))
+					ft_echo(&comand[n_cmd][7], "-n");
+			else if(!ft_strncmp(comand[n_cmd], "echo ", 5) || !ft_strncmp(comand[n_cmd], "echo", 4))
+					ft_echo(&comand[n_cmd][5], "");
+			n_cmd++;
+		}
 		ft_prompt();
+		free(line);
 	}
 
 	return (0);

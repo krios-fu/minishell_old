@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_parseo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 23:10:33 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/29 17:18:34 by krios-fu         ###   ########.fr       */
+/*   Created: 2021/01/29 15:28:11 by krios-fu          #+#    #+#             */
+/*   Updated: 2021/01/29 16:39:27 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    ft_echo(char *str, char *argv)
+char	**ft_set_comand (char *str)
 {
-	while (*str == ' ')
-		str++;
-	if(*str == '\0')
+	char **comand;
+	int i;
+
+	i = 0;
+
+	comand = ft_split(str, ';');
+
+	/*while (comand [i] != '\0')
 	{
-		write(1, "\n", 1);
-		return ;
-	}
-	if (argv[0] == '-' && argv[1] == 'n')
-		ft_printf("%s", str);
-	else
-		ft_printf("%s\n", str);
+		ft_printf("%s", comand[i]);
+		i++;
+	}*/
+	return (comand);
 }

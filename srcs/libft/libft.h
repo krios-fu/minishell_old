@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 14:58:27 by krios-fu          #+#    #+#             */
-/*   Updated: 2020/01/29 13:32:42 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:51:47 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 
 typedef struct	s_list
 {
+	void			*var;
+	char			c;
 	void			*content;
+
 	struct s_list	*next;
 }				t_list;
 

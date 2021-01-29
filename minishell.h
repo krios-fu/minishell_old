@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 18:14:39 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/28 23:16:20 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:15:08 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 
 
 t_list	*ft_envp(char ** envp);
-void	ft_print_envp(t_list *envp_l);
+void	ft_print_envp(char **envp);
 void    ft_pwd_print(void);
 void    ft_echo(char *str, char *argv);
+char    **ft_set_comand (char *str);
 
 #endif
