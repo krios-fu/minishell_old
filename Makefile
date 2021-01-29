@@ -28,6 +28,7 @@ all: $(NAME)
 run:
 	@clear
 	@gcc -Wall -Werror -Wextra libft.a libftprintf.a minishell.a -o minishell
+	@./minishell
 
 clean:
 	clear
