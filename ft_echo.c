@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 23:10:33 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/30 00:36:18 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:28:43 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,57 +18,49 @@
 ** verifica la flag
 ** avanza hasta encontrar los argumentos
 */
-void    ft_echo(char *str)
+char    *ft_print_echo2(char *str)
 {
-	while (*str == ' ')
-		str++;
-	if (str[0] == '-' && str[1] == 'n' && (str[2] == ' ' ||  str[2] == '\0') && (ft_strlen(str) > 2))
+	while(str[0] != 92 && str[1] != 34 && *str != '\0')
 	{
-		while (*str == ' ' || *str == '-' || *str == 'n')
-			str++;
-		//ft_dquote(str); // simulo echo con una sola " ejemplo origina: echo "e --> dquote> 
-		if(*str == '\\') //verifico que se imprima con comillas
-			ft_printf("\"%s\"", ft_strtrim(str, "\\\""));
-		else
-			ft_printf("%s", ft_strtrim(str, "\\\""));
-		return ;
-	}
-	while (*str == ' ')
+		write(1, str, 1);
 		str++;
-	//ft_dquote(str); 
-	if(*str == '\0')
-		write(1, "\n", 1);
-	else if(*str == '\\') //verifico que se imprima con comillas
-			ft_printf("\"%s\"", ft_strtrim(str, "\\\""));
-		else
-			ft_printf("%s", ft_strtrim(str, "\\\""));
+	}
+	return (str);
 }
 
 void	ft_prit_echo(char *str)
 {
-	char **new_str;
-	int i;
-	int flag; 
+	int flag;
 
 	flag = 0;
-	i = 0;
-	new_str = ft_split(str, '\"');
-	
-	while (new_str[i])
+	while (*str != '\0')
 	{
-		if (new_str[i][0] != '-' && new_str[i][1] != 'n' && new_str[i][2] != '\0')
-			ft_echo(new_str[i]);
-		else
+		while (*str == ' ')
+			str++;
+		while (str[0] == '-' && str[1] == 'n' && flag == 0)
+		{
+			str++;
 			flag = 1;
-		
-		if(new_str[i + 1] && flag != 1)
-			write(1, " ", 1);
-
-		i++;
+			str++;
+		}
+		if(*str == 92)
+		{
+			str++;
+			str = ft_print_echo2 (str);
+		}
+		while (*str == ' ')
+			str++;
+		if (str)
+		{
+			if (*str != 34)
+				write(1, str, 1);
+		}
+		else 
+			break;
+		str++;
 	}
 	if (flag == 0)
-		write(1, "\n", 1);
-	
+			write(1, "\n", 1);
 }
 
 void ft_dquote(char *str)
