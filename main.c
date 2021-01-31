@@ -1,44 +1,43 @@
 #include "minishell.h"
 
-/*
-** funcion echo resive un puntero despues de la palabra echo
-** avanza los espacios hasta encontra -n  
-** verifica la flag
-** avanza hasta encontrar los argumentos
-*/
-char    *ft_print_echo2(char *str)
-{
-	while(str[0] != 92 && str[1] != 34 && *str != '\0' && *str != ' ')
-	{
-		write(1, str, 1);
-		str++;
-	}
-	return (str);
-}
-
 void	ft_prit_echo(char *str)
 {
 	int flag;
+	int spc;
+	int	flag_spc;
+	int spc_one;
 
+	spc_one = 0;
+	flag_spc = 0;
+	spc = 0;
 	flag = 0;
 	while (*str != '\0')
 	{
-		while (*str == ' ')
+		while (*str == ' ' && spc == 0)
 			str++;
-		while (str[0] == '-' && str[1] == 'n' && flag == 0)
+		while (str[0] == '-' && str[1] == 'n' && flag != 2)
 		{
 			str++;
 			flag = 1;
+			str++;
 		}
-		if(*str == 92)
+		if (*str == 34) // "
 		{
 			str++;
-			str = ft_print_echo2 (str);
+			spc = 1;
+			if(flag_spc > 0)
+			{
+				spc = 0;
+				flag_spc = 0;
+			}
+			if(spc != 0)
+				flag_spc++;
 		}
-		if (str)
-			write(1, str, 1);
-		else 
-			break;
+		if(*str == 92) // /
+			str++;
+		write(1, str, 1);
+		if(spc == 0 && str[1] == ' ')
+			write(1, " ", 1);
 		str++;
 	}
 	if (flag == 0)
@@ -48,5 +47,5 @@ void	ft_prit_echo(char *str)
 int main ()
 {
 
-    ft_prit_echo("\\\"42");
+    ft_prit_echo("");
 }
