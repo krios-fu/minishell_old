@@ -6,7 +6,7 @@
 /*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 16:20:05 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/01/30 14:27:18 by krios-fu         ###   ########.fr       */
+/*   Updated: 2021/01/31 22:45:40 by krios-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,14 @@ int main (int argc, char *argv[], char *envp[])
 		//			ft_echo(&comand[n_cmd][7 + spc], "-n");
 			else if(!ft_strncmp(&comand[n_cmd][spc], "echo ", 5) || !ft_strncmp(&comand[n_cmd][spc], "echo", 5))
 					ft_prit_echo(&comand[n_cmd][5 + spc]);
+			else if (!ft_strncmp(&comand[n_cmd][spc], "cd ", 3))
+					ft_chdir(&comand[n_cmd][3 + spc]);
 			else
 				ft_error_msg (&comand[n_cmd][spc]);
+			free (comand[n_cmd]);
 			n_cmd++;
 		}
+		free(comand);
 		ft_prompt();
 	free(line);
 	}
