@@ -46,6 +46,5 @@ void	ft_prit_echo(char *str)
 
 int main ()
 {
-
-    ft_prit_echo("");
+    ft_print_echo("");
 }
